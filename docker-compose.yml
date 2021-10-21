@@ -1,25 +1,27 @@
 version: "3.9"
 services:
 
-  # database:
-  #   image: postgres:14.0
-  #   working_dir: /app
-  #   env_file:
-  #     - ".env"
-  #   environment:
-  #     - POSTGRES_DB=${DB_DATABASE}
-  #     - POSTGRES_USER=${DB_USERNAME}
-  #     - POSTGRES_PASSWORD=${DB_PASSWORD}
-  #   ports:
-  #     - "5432:5432"
-  #   depends_on:
-  #     - php-fpm
-  #   volumes:
-  #     - /data/db/postgres/:/var/lib/postgresql/data/
-  #   networks:
-  #     dataprag:
-  #       aliases:
-  #         - "db.dataprag"
+  database:
+    image: mysql:8.0.25
+    command: --default-authentication-plugin=mysql_native_password
+    working_dir: /app
+    env_file:
+        - ".env"
+    environment:
+        - MYSQL_DATABASE=${DB_DATABASE}
+        - MYSQL_USER=${DB_USERNAME}
+        - MYSQL_PASSWORD=${DB_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+        - "3306:3306"
+    depends_on:
+        - php-fpm
+    volumes:
+      - /data/db/mysql:/var/lib/mysql
+    networks:
+      dataprag:
+        aliases:
+          - "db.docker"
 
   webserver:
     image: nginx:alpine
