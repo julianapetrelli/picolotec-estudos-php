@@ -1,10 +1,20 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    var_dump($_POST);
+    
+    $nome = (string)$_POST['nome'] ?? null;
 
-    //Super variavel responsavel pela apresentação de anexos enviados via POST|form
-    var_dump($_FILES);
+    //Retire os espaços em branco (ou outros caracteres) do início e do final de uma string
+    $nome = trim($nome);
+
+    //Valida a utilização da barra invertida "\", remove apenas uma barra
+    $nome = stripslashes($nome);
+
+    //Converte os caracteres (<>"'&/)
+    $nome = htmlspecialchars($nome);
+
+    var_dump($nome);
+    exit;
 }
 
 ?>
@@ -20,12 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <input type="text" name="nome">
-        <input type="email" name="email">
-        <input type="color" name="color">
-        <input type="date" name="date">
-        <input type="datetime" name="datetime">
-        <input type="file" name="file">
-        <input type="number" name="number">
         <input type="submit" value="enviar">
     </form>
 </body>

@@ -1,10 +1,19 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    var_dump($_POST);
 
-    //Super variavel responsavel pela apresentação de anexos enviados via POST|form
-    var_dump($_FILES);
+    // Tras todos os dados filtrados e dentro de um único array
+
+    /*
+
+    $search_html = filter_input(INPUT_GET, 'chavePesquisa', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    */
+
+    $nome = filter_input_array(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    var_dump($nome);
+    exit;
 }
 
 ?>
@@ -20,12 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <input type="text" name="nome">
-        <input type="email" name="email">
-        <input type="color" name="color">
-        <input type="date" name="date">
-        <input type="datetime" name="datetime">
-        <input type="file" name="file">
-        <input type="number" name="number">
         <input type="submit" value="enviar">
     </form>
 </body>

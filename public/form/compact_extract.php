@@ -1,13 +1,19 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    var_dump($_POST);
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    
+    //Criando variáveis para as chaves do array
+    extract($_POST);
+    var_dump($nome, $idade);
 
-    //Super variavel responsavel pela apresentação de anexos enviados via POST|form
-    var_dump($_FILES);
+    // Transformar variáveis em chaves no array
+    $data = compact('nome', 'idade', '_POST');
+    
+    exit;
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -20,12 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <form action="" method="post" enctype="multipart/form-data">
         <input type="text" name="nome">
-        <input type="email" name="email">
-        <input type="color" name="color">
-        <input type="date" name="date">
-        <input type="datetime" name="datetime">
-        <input type="file" name="file">
-        <input type="number" name="number">
+        <input type="text" name="idade">
         <input type="submit" value="enviar">
     </form>
 </body>
