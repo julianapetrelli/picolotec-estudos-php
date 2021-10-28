@@ -1,6 +1,9 @@
 <?php
 
 /*
+
+Função comum
+
 function soma($a, $b) {
 }
 
@@ -19,4 +22,4 @@ $soma = function($b) use($a){
     return $a + $b;
 };
 
-$echo $soma($)
+echo $soma(4);

@@ -1,0 +1,18 @@
+{
+    "name": "juliatangerino/curso-php",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Juliatangerino\\CursoPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juliana Tangerino",
+            "email": "julianatangerino2017@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^2.3"
+    }
+}
