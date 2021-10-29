@@ -6,7 +6,10 @@
 //A primeira letra da classe deve ser maiúscula
 //Classe sempre no singular
 
-class Vehicle
+
+require_once("Ivehicle.php");
+
+abstract class Vehicle implements Ivehicle
 {
     //tributos
 
